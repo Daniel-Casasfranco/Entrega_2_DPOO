@@ -26,16 +26,20 @@ import modelo.VentaCafeteria;
  * Compras en la cafeteria: impuesto al consumo, propina, puntos de fidelidad y
  * aviso de alergenos (RF-13 a RF-16).
  */
+
 public class PanelCafeteria extends PanelClub {
 
     private static final long serialVersionUID = 1L;
-
+    //Creo tabla 
     private final DefaultTableModel modeloProductos = UI.modeloTabla("Producto", "Tipo", "Precio", "Alergenos");
+    
     private final JTable tablaProductos = UI.tabla(modeloProductos);
+    
     private final List<Producto> productos = new ArrayList<>();
 
     private final DefaultTableModel modeloPedido = UI.modeloTabla("Producto", "Cantidad", "Subtotal");
     private final JTable tablaPedido = UI.tabla(modeloPedido);
+    
     private final Map<Producto, Integer> pedido = new LinkedHashMap<>();
 
     private final JTextField campoCantidad = UI.campo("1");

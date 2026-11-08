@@ -1,6 +1,7 @@
 package interfaz;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -37,10 +38,14 @@ import modelo.ReglaNegocioException;
  * Utilidades de Swing que comparten todos los paneles: formularios, tablas,
  * combos con texto personalizado, lectura de campos y mensajes de error.
  */
+
+	//clase muy importante porque es la que hace que toda el ui tenga 
+	//visualmente el mismo aspecto ademas se puede editar facilmente
+
 public final class UI {
 
-    public static final Color COLOR_PRIMARIO = new Color(0x1B4F9C);
-    public static final Color COLOR_FONDO = new Color(0xF5F7FA);
+    public static final Color COLOR_PRIMARIO = new Color(0x1E1E1E);
+    public static final Color COLOR_FONDO = new Color(0x121212);
     public static final Font FUENTE_TITULO = new Font("SansSerif", Font.BOLD, 18);
     public static final Font FUENTE_SUBTITULO = new Font("SansSerif", Font.BOLD, 14);
 

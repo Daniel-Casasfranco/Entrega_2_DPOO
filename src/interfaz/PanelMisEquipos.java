@@ -38,27 +38,49 @@ public class PanelMisEquipos extends PanelClub {
     private final JTextField campoPosicion = UI.campo("");
     private final JTextField campoCamiseta = UI.campo("");
 
+    
+    
+    
+    
     public PanelMisEquipos(Club club, Usuario usuario) {
+    	
         super(club, usuario);
+        
+        //agrega titulo arriba del panel
         add(UI.titulo("Mis equipos"), BorderLayout.NORTH);
-
+        
+        //creo 3 paneles distintintos para cada parte ademas de el split pane
+        
+        
+        //crea un grid para agregar las tres tablas a la izquierda con el split panel
         JPanel tablas = new JPanel(new GridLayout(3, 1, 0, 8));
         tablas.add(UI.seccion("Equipos en los que juego", UI.scroll(UI.tabla(modeloEquipos))));
         tablas.add(UI.seccion("Mis estadisticas", UI.scroll(UI.tabla(modeloEstadisticas))));
         tablas.add(UI.seccion("Mis sanciones", UI.scroll(UI.tabla(modeloSanciones))));
-
+        
+        
+        
+        //crea otro panel para incribirse en el equipo con un combo box y dos text areas un boton tambien.
         JPanel formulario = new JPanel(new BorderLayout());
         formulario.add(UI.seccion("Inscribirme en un equipo", UI.formulario("Equipo:", comboEquipo,
                 "Posicion:", campoPosicion, "Camiseta:", campoCamiseta,
                 UI.boton("Inscribirme", e -> inscribirme()))), BorderLayout.NORTH);
         formulario.add(estado, BorderLayout.SOUTH);
 
+        
+        // crea la division de tablas y formulario 
         JSplitPane division = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, tablas, formulario);
         division.setResizeWeight(0.62);
         add(division, BorderLayout.CENTER);
     }
+    
+    
+    
+    
 
     private void inscribirme() {
+    	//funcion que inscribe con la informacion dada en las areas 
+    	
         if (UI.ejecutar(this, () -> club.inscribirJugador(usuario.getCodigo(),
                 UI.seleccionado(comboEquipo, "un equipo").getNombre(), UI.texto(campoPosicion, "Posicion"),
                 UI.entero(campoCamiseta, "Camiseta")), "Inscripcion realizada")) {
@@ -84,6 +106,9 @@ public class PanelMisEquipos extends PanelClub {
         return "";
     }
 
+    
+    
+    
     @Override
     public void actualizar() {
         UI.recargar(comboEquipo, club.getEquipos());

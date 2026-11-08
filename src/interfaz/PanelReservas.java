@@ -25,7 +25,9 @@ public class PanelReservas extends PanelClub {
 
     private final DefaultTableModel modelo =
             UI.modeloTabla("Fecha", "Inicio", "Fin", "Instalacion", "Disciplina", "Modalidad", "Jugadores");
-
+    
+    
+    // Agrega la informacion necesaria a los combo box y a los text areas 
     private final JComboBox<Instalacion> comboInstalacion = UI.combo(new ArrayList<Instalacion>(),
             i -> i.getNombre() + " (" + Listas.texto(i.getDisciplina()) + (i.isTechada() ? ", techada" : "") + ")");
     private final JTextField campoFecha = UI.campo(LocalDate.now().plusDays(1).toString());
@@ -33,10 +35,19 @@ public class PanelReservas extends PanelClub {
     private final JTextField campoFin = UI.campo("10:00");
     private final JComboBox<Modalidad> comboModalidad = UI.combo(Arrays.asList(Modalidad.values()), Listas::texto);
 
+    
+    
+    
+    
+    
     public PanelReservas(Club club, Usuario usuario) {
+    	// usa la herencia para tener toda la info de el usuario
         super(club, usuario);
+        
+        // agrega titulo arriba del panel
         add(UI.titulo("Reservas"), BorderLayout.NORTH);
-
+        
+        //crea split panel donde en una parte estan las reservas y en la ptra se puede crear
         JSplitPane division = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 UI.seccion("Mis reservas", UI.scroll(UI.tabla(modelo))),
                 UI.seccion("Nueva reserva", UI.formulario("Instalacion:", comboInstalacion,
@@ -46,8 +57,10 @@ public class PanelReservas extends PanelClub {
         division.setResizeWeight(0.6);
         add(division, BorderLayout.CENTER);
     }
+    
 
     private void reservar() {
+    	// usa la informacion elegida en los combos y el text area para hacer la reserva
         if (UI.ejecutar(this, () -> {
             Modalidad modalidad = UI.seleccionado(comboModalidad, "una modalidad");
             int jugadores = modalidad == Modalidad.SENCILLOS ? 2 : 4;
@@ -58,15 +71,19 @@ public class PanelReservas extends PanelClub {
             actualizar();
         }
     }
+    
 
     @Override
     public void actualizar() {
+    	
+    	//usa la funcion de el contrato con club pero distinto para que funcione en el caso
         List<Instalacion> individuales = new ArrayList<>();
         for (Instalacion i : club.getInstalaciones()) {
             if (Arrays.asList(Listas.DISCIPLINAS_INDIVIDUALES).contains(i.getDisciplina())) {
                 individuales.add(i);
             }
         }
+        
         UI.recargar(comboInstalacion, individuales);
         modelo.setRowCount(0);
         for (Reserva r : club.getReservas()) {

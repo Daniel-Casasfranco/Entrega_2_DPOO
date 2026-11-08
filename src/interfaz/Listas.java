@@ -15,6 +15,8 @@ import modelo.Socio;
 import modelo.Usuario;
 
 /** Consultas de apoyo que usan varios paneles para llenar combos y tablas. */
+
+
 public final class Listas {
 
     public static final Deporte[] DEPORTES_CONJUNTO = {Deporte.FUTBOL, Deporte.BALONCESTO, Deporte.VOLEIBOL};
@@ -82,8 +84,12 @@ public final class Listas {
         }
         return resultado;
     }
+    
+    
+    
 
     /** Registro deportivo (Jugador) de un socio, o null si no juega en equipos. */
+    
     public static Jugador jugadorDe(Socio socio) {
         if (socio instanceof Jugador) {
             return (Jugador) socio;

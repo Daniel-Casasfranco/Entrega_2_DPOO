@@ -41,8 +41,7 @@ public class PanelCompetencias extends PanelClub {
     private static final String TORNEO = "Torneo de los Cerros";
     private static final String ASCUN_TEXTO = "ASCUN";
 
-    private final DefaultTableModel modeloCompetencias =
-            UI.modeloTabla("Competencia", "Tipo", "Deporte", "Categoria", "Temporada", "Equipos", "Partidos");
+    private final DefaultTableModel modeloCompetencias = UI.modeloTabla("Competencia", "Tipo", "Deporte", "Categoria", "Temporada", "Equipos", "Partidos");
     private final JTable tablaCompetencias = UI.tabla(modeloCompetencias);
     private final DefaultTableModel modeloPosiciones = UI.modeloTabla("#", "Equipo", "G", "E", "P", "Puntos");
     private final DefaultTableModel modeloResultados =
@@ -59,10 +58,8 @@ public class PanelCompetencias extends PanelClub {
 
     // Entrenador: inscribir equipo y registrar partidos
     private final JComboBox<Equipo> comboEquipo = UI.combo(new ArrayList<Equipo>(), Equipo::getNombre);
-    private final JList<Jugador> listaNomina = UI.listaMultiple(new ArrayList<Jugador>(),
-            j -> j.getNombre() + " #" + j.getNumeroCamiseta() + (j.estaSuspendido() ? " (suspendido)" : ""));
-    private final JComboBox<InscripcionEquipo> comboInscripcion =
-            UI.combo(new ArrayList<InscripcionEquipo>(), i -> i.getEquipo().getNombre());
+    private final JList<Jugador> listaNomina = UI.listaMultiple(new ArrayList<Jugador>(), j -> j.getNombre() + " #" + j.getNumeroCamiseta() + (j.estaSuspendido() ? " (suspendido)" : ""));
+    private final JComboBox<InscripcionEquipo> comboInscripcion = UI.combo(new ArrayList<InscripcionEquipo>(), i -> i.getEquipo().getNombre());
     private final JTextField campoRival = UI.campo("");
     private final JTextField campoEscenario = UI.campo("");
     private final JTextField campoFecha = UI.campo(LocalDate.now().toString());

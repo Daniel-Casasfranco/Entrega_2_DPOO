@@ -13,14 +13,20 @@ import persistencia.Persistencia;
  * {@code datos/club/club.dat}; si no existe, ofrece cargar datos de demostracion.
  */
 public class AplicacionClub {
-
+	
+	// Datos base 
     public static final String CARPETA_DATOS = "datos/club";
 
+    
+    //
     public static void main(String[] args) {
         String carpeta = args.length > 0 ? args[0] : CARPETA_DATOS;
         SwingUtilities.invokeLater(() -> iniciar(carpeta));
     }
-
+    
+    
+    
+    
     private static void iniciar(String carpeta) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -29,6 +35,7 @@ public class AplicacionClub {
         }
 
         Persistencia persistencia = new Persistencia(carpeta);
+        
         boolean existia = persistencia.existe();
         Club club = persistencia.cargar();
 

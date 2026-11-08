@@ -44,6 +44,11 @@ import modelo.Usuario;
  * reservas, sesiones con asistencia, ventas y mensualidades. Todo se registra con
  * los metodos de {@link Club}, asi que respeta las reglas de negocio.
  */
+
+
+// como este punto era muy repetitivo se pidio a la ia que hiciera los datos.
+
+
 public final class DatosDemo {
 
     private static final String[] NOMBRES = {"Andres", "Camila", "Diego", "Valentina", "Santiago", "Isabella",

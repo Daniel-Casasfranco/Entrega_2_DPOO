@@ -28,11 +28,13 @@ public class PanelPerfil extends PanelClub {
 
     @Override
     public void actualizar() {
+    	//informacion general de usuario
         StringBuilder sb = new StringBuilder();
         sb.append(club.consultarPerfil(usuario)).append('\n');
         sb.append("Rol: ").append(VentanaPrincipal.rol(usuario)).append('\n');
         sb.append("Usuario: ").append(usuario.getLogin()).append("\n\n");
-
+        
+        //mira si es un empleado para agregar mas info
         if (usuario instanceof Empleado) {
             Empleado e = (Empleado) usuario;
             sb.append("Codigo de descuento: ").append(e.getCodigoDescuento()).append('\n');
@@ -44,7 +46,8 @@ public class PanelPerfil extends PanelClub {
                 sb.append("  ").append(t).append('\n');
             }
         }
-
+        
+        //mira si es un socio para agregar mas info
         if (usuario instanceof Socio) {
             Socio s = (Socio) usuario;
             sb.append("Edad: ").append(s.getEdad()).append(" anos\n");
