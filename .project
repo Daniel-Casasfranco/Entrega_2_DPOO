@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Diagramas/Diagrama alto nivel interfaz.pdf</name>
+			<type>1</type>
+			<location>C:/Users/Casas/Downloads/Diagrama alto nivel interfaz.pdf</location>
+		</link>
+	</linkedResources>
 </projectDescription>
